@@ -1,0 +1,6 @@
+.DS_Store
+.idea/
+material/
+collected_static/
+common_static/
+*.ini

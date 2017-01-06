@@ -1,0 +1,39 @@
+* {margin:0; padding:0;}
+body {
+    width:100%; height:500px;
+    font-size:60px; font-family:"KaiTi","SimSun-ExtB","Microsoft YaHei UI"
+}
+p {margin:30px; line-height:33px;}
+#welcome {
+    float:left; width:100%; height:7%;
+    background-color: orange;
+    font-family:"Microsoft YaHei UI";
+}
+#players {
+    float:left; width:100%; height:80%;
+    background-color: yellow;
+}
+#players li {
+    margin-left:80px; margin-top:20px;
+    font-size:65px;
+}
+#logout {
+    float:left; width:50%; height:13%;
+    background-color: bisque;
+    font-family:"Microsoft YaHei UI";
+    text-align:center;
+}
+#startButton {
+    float:left; width:50%; height:13%;
+    background-color: green;
+}
+#startButton input {
+    float:right;
+    width: 300px;
+    line-height: 80px;
+    font-size: 40px; font-family:"Microsoft YaHei UI";
+    border-radius: 5px;
+    overflow: hidden;
+    border: 1px solid #333;
+    box-shadow: 0 1px 2px #8b8b8b inset,0 -1px 0 #3d3d3d inset,0 -2px 3px #8b8b8b inset;
+}

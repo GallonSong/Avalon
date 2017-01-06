@@ -1,0 +1,7 @@
+<p>现在共有{{ length }}位玩家在线！</p>
+<ul>
+    {% for playername in playerList %}
+        <li>{{ playername }}</li>
+    {% endfor %}
+</ul>
+<input type="hidden" id="length" value="{{ length }}"/>

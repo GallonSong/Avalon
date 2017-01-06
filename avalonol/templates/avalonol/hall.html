@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/static/hall.css" rel="stylesheet" type="text/css"/>
+    <script src="/static/jquery-1.11.3.min.js"></script>
+
+    <script type = "text/javascript">
+        $(document).ready(setInterval(function(){
+            $.ajaxSetup({cache:false})
+            leaderStart();
+            $.get("{% url 'avalonol:players' %}",function(ret){ //显示列表
+                $("#players").html(ret);
+                var playernum = $("#length").val();
+                if (playernum >= 5 && playernum <= 10){
+{#                if (playernum >= 1 && playernum <=10){#}
+                    var indivname = $("#indivname").val();
+                    var playerListFirst = $("#playerListFifth").val();
+                    if (indivname == playerListFirst){
+{#                    if (indivname == 'gallon'){#}
+                        document.getElementById("startButton").style.display = 'block';
+                    }
+                }else{
+                    document.getElementById("startButton").style.display = 'none';
+                }
+            });
+{#            $.ajax({#}
+{#                type: "get",#}
+{#                url: "{% url 'avalonol:player' %}",#}
+{#                ifModified: true,#}
+{#                success: function(ccc){#}
+{#                    alert(ccc);#}
+{#                    $("#players").html(ccc);#}
+{#                },#}
+{#            });#}
+        },3000));
+    </script>
+    <script type="text/javascript">
+        function leaderStart(){  //触发leader开始事件
+            var command = arguments[0]?arguments[0]:0;
+            $.get("{% url 'avalonol:instance' %}",{'command':command},function(commandback){
+                if (commandback == 1){
+                    window.location.href="{% url 'avalonol:game' %}";
+                }
+            });
+        }
+
+        function replace(){
+	    document.body.style.height = document.documentElement.clientHeight+"px";
+	    document.body.style.width = document.documentElement.clientWidth+"px";
+	}
+    </script>
+    <script type="text/javascript">
+	window.onload = replace;
+    </script>
+</head>
+
+<body>
+    <div id="welcome">
+        <p>登录成功！{{ user.displayname }} ～</p>
+    </div>
+    <div id="players">
+        <p>现在共有{{ length }}位玩家在线！</p>
+        <ul>
+            {% for playerName in playerList %}
+                <li>{{ playerName }}</li>
+            {% endfor %}
+            <input type="hidden" id="length" value="{{ length }}"/>
+        </ul>
+    </div>
+    <div id="logout"><a href="{% url 'avalonol:logout' %}">退出登录</a></div>
+
+    <div id="startButton" style="display:none;"><input type="button" value="开始游戏" onclick="leaderStart(1)"/></div>
+    <span id="test" style="display: none;"></span>
+
+    <input type="hidden" id="indivname" value="{{ user.displayname }}"/>
+    <input type="hidden" id="playerListFifth" value="{{ playerList.4 }}"/>
+</body>
+</html>
