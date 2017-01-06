@@ -1,9 +1,11 @@
+# -*- coding: utf-8 -*-
+
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
 
-import urllib.parse
+# import urllib.parse
 
 from .models import User
 
@@ -125,7 +127,8 @@ def choose(request):
     helper.fortest = rawmembers
     members = []
     for e in rawmembers:
-        members.append(urllib.parse.unquote(e))
+        pass
+        # members.append(urllib.parse.unquote(e))
     if helper.stageindex[0] < 6:
         process.recordmember(members)
     elif helper.stageindex[0] == 6:

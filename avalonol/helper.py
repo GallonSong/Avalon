@@ -1,5 +1,4 @@
-# help
-
+# -*- coding: utf-8 -*-
 
 class helper:
     fortest = []
